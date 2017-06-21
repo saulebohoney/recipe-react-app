@@ -4,7 +4,8 @@ export default function SearchForm(props){
     return (
         <form>
             <label>Search</label>
-            <input type='search' placeholder='Pizza'/>
+            <input type='search' placeholder='Pizza'  onChange={(e) => props.handleChange(e.target.value)} />
+
         </form>
     );
 }

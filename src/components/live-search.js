@@ -6,15 +6,17 @@ export default class LiveSearch extends React.Component{
       constructor(props) {
         super(props);
         this.state = {
-          searchValue: props.recipes,
+          searchValue: '',
+          searchRecipes:props.recipes,
         }
     }
 
     render(){
         return (<div>
-            <SearchForm />
-            <RecipesList recipes={this.state.searchValue} />
+            <SearchForm value={this.state.searchValue} handleChange={searchInput => this.setState({searchValue:searchInput})} />
+            <RecipesList recipes={this.state.searchRecipes} />
         </div>
         );
     }
 }
+
