@@ -6,21 +6,43 @@ export default class LiveSearch extends React.Component{
       constructor(props) {
         super(props);
         this.state = {
-          searchValue: '',
+          searchValueName: '',
+          searchValueIngredients: '',
           searchRecipes:props.recipes,
+          ingredients:'false',
         }
     }
 
     render(){
 
-        const tempRecipes = this.state.searchRecipes.filter( recipe => {
-            return recipe.name.indexOf(this.state.searchValue) > -1;
-        });
+        // let temp;
+  
+        // if(this.state.ingredients)
+        // {
+        //     temp = this.state.searchRecipes;
+        // }
+        // else{
+
+           
+        // }
+
+        const tempRecipes1 = this.state.searchRecipes.filter( recipe => {
+                return recipe.name.indexOf(this.state.searchValueName) > -1;
+            });
+
+        const tempRecipes2 = this.state.searchRecipes.filter( recipe => {
+                    const innerArray = recipe.ingredients.filter( ingredient =>{
+                        return ingredient.name.indexOf(this.state.searchValueIngredients) > -1});
+                    return innerArray.length > 0;
+            });
 
         return (<div>
-            <SearchForm value={this.state.searchValue} 
-            handleChange={searchInput => this.setState({searchValue:searchInput})} />
-            <RecipesList recipes={tempRecipes} />
+            <SearchForm label="Recipe" value={this.state.searchValueName} 
+            handleChange={searchInput => this.setState({searchValueName:searchInput})} />
+            <RecipesList recipes={tempRecipes1} />
+            <SearchForm label="Ingredients" value={this.state.searchValueIngredients} 
+            handleChange={searchInput2 => this.setState({searchValueIngredients:searchInput2})} />
+            <RecipesList recipes={tempRecipes2} />
         </div>
         );
     }
