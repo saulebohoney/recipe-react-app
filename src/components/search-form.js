@@ -1,5 +1,10 @@
 import React from 'react';
 
 export default function SearchForm(props){
-    return <p>Hello from the SearchForm</p>
+    return (
+        <form>
+            <label>Search</label>
+            <input type='search' placeholder='Pizza'/>
+        </form>
+    );
 }
