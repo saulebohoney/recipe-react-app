@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchForm from './search-form';
 import RecipesList from './recipes-list';
+import Picker from './picker';
 
 export default class LiveSearch extends React.Component{ 
       constructor(props) {
@@ -43,6 +44,12 @@ export default class LiveSearch extends React.Component{
             <SearchForm label="Ingredients" value={this.state.searchValueIngredients} 
             handleChange={searchInput2 => this.setState({searchValueIngredients:searchInput2})} />
             <RecipesList recipes={tempRecipes2} />
+
+            <Picker/>
+
+            {/*<label="Recipe" value={this.state.searchValueName} 
+            handleChange={searchInput => this.setState({searchValueName:searchInput})} />
+            <RecipesList recipes={tempRecipes1} />*/}
         </div>
         );
     }
