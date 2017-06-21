@@ -5,5 +5,5 @@ import LiveSearch from './components/live-search';
 import './index.css';
 import recipes from './recipes.json';
 
-ReactDOM.render(<LiveSearch />, document.getElementById('root'));
+ReactDOM.render(<LiveSearch recipes={recipes} />, document.getElementById('root'));
 registerServiceWorker();
