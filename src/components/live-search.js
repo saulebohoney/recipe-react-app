@@ -12,9 +12,15 @@ export default class LiveSearch extends React.Component{
     }
 
     render(){
+
+        const tempRecipes = this.state.searchRecipes.filter( recipe => {
+            return recipe.name.indexOf(this.state.searchValue) > -1;
+        });
+
         return (<div>
-            <SearchForm value={this.state.searchValue} handleChange={searchInput => this.setState({searchValue:searchInput})} />
-            <RecipesList recipes={this.state.searchRecipes} />
+            <SearchForm value={this.state.searchValue} 
+            handleChange={searchInput => this.setState({searchValue:searchInput})} />
+            <RecipesList recipes={tempRecipes} />
         </div>
         );
     }
